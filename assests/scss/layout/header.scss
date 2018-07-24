@@ -1,0 +1,363 @@
+header{
+	position: absolute;
+	width: 100%;
+	left: 0;
+	display: flex;
+	justify-content: space-between; 
+	z-index: 999; 
+	& .logo {
+      
+		@include breakpoint(large) {max-width: 130px; }
+     }
+	&.homeheader{
+		padding: 34px 18px;
+		box-shadow: none;
+		& .logo{		
+			width: 225px;
+			align-items: center;
+			display: flex;
+			margin-left: 50px;
+			@include breakpoint(large) {    width: 170px; margin-left: 15px;}
+			& a{ display: block;				
+			}
+			& img{
+				display: none;
+				width: 225px;
+				@include breakpoint(large) {    width: 170px;}
+			}
+			
+		}
+		//& .right-header{ padding-left: 0px;}		
+	@include breakpoint(large) {padding: 10px 18px;}
+		&.sticked {
+	    padding: 8px 0;	
+	        @include breakpoint(large) {padding: 5px 0;}
+			& .right-header{
+				& input{
+					   @include breakpoint(large) {  height: 30px;
+						   font-size: 14px;}
+				}
+			} 
+         }	
+	 }
+	&.sticked {
+    position: fixed;
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0px 0px 10px #ccc;
+			& .logo{
+			& img{ display: block;}
+		}
+		&.afterlogin_header{
+		  & .header_top{
+			& .header_top_inner {
+                     height: 40px;
+			& .logo{		
+				width: 100px;
+
+			   }
+            }
+			  ul.notification_icon{
+				  & li{
+					  & i{
+						//font-size: 20px;
+					  }
+				  }
+			  }
+		  }
+		}
+	& .navigation {
+          height: 75px;
+		@include breakpoint(large) {height: 60px;}	
+		& ul {
+			& li{
+				& a{
+					& svg{	
+					}
+				}
+			} 
+		}
+        }
+    }
+
+	& form{
+		& label{
+			display: block;
+			font-weight: normal;
+			font-size: 14px;
+			color: #474747;
+			font-family: 'Poppins', sans-serif;
+			letter-spacing: 0.03em;
+			margin-bottom: 5px;
+			@include breakpoint(large) {margin-bottom: 0px;font-size: 12px;}
+		
+		}
+		& .form-group{
+			margin-bottom: 0px;
+			& .row{
+				margin: 0;
+				& .col-md-5,.col-md-2{
+					margin: 0; 
+					padding: 0; 
+					padding-right: 11px;
+				}
+			}
+		& span{
+				color: #b1b1b1;
+				font-size: 12px;    letter-spacing: 0.04em;
+			&:hover{ color: #65a9e8;}
+			}	
+			
+		}
+	}
+	& .right-header {
+        width:44%; 
+		padding-left: 0px;
+		@include breakpoint(large) {width: 46%; }
+		& .col-md-2{
+			    max-width: 100px!important;
+		}
+		& input{
+			@include breakpoint(large) {
+				    line-height: normal;
+			}
+		}
+    }
+& ul{
+	&.nav{
+		    justify-content: flex-end;
+		    max-width:600px;
+		@include breakpoint(large) { max-width:493px; }
+		& li{
+			&.nav-item{
+				&:last-child{
+					.nav-link	{ padding-right: 0px;}
+				}
+				& .nav-link{ color:#3690ce;
+					&:hover{
+						color:#a1b1c8;
+					}
+				}
+				&.current-menu-item{
+					& .nav-link{
+						color: #a1b1c8;
+					}
+					
+				}
+			}
+		}
+		
+		
+       }
+	}
+}
+.right-header input.btn-hover {
+    margin-top: 19px;
+	@include breakpoint(large) {margin-top: 17px;}
+}
+header {
+	&.sticked{
+	    padding: 20px 18px;	
+	}
+    padding: 20px 18px;
+    box-shadow: 0px 0px 10px #ccc;
+	& .inner-header {
+    display: flex;
+    justify-content: space-between;
+	align-items: center;
+	& .logo {
+		max-width: 260px;
+		@include breakpoint(large) {max-width: 200px;}
+		& img{
+			width: 260px;
+			@include breakpoint(large) {width: 200px;}
+		}
+	}
+}
+}
+/////////////////////////////////////////// header after login /////////////////////////////////////
+.afterlogin_header{
+	             flex-wrap: wrap;
+	             padding: 0px;
+	             box-shadow: 0px 0px 40px #626161;
+	         &.sticked{ padding: 0px;}
+              & .header_top{
+				 background: #368fcd;
+				 width: 100%; 	
+	          & .header_top_inner {
+				 display: flex;
+				 justify-content: space-between;
+				 width: 100%;
+				 align-items: center;
+				 height: 70px;	
+				 flex-wrap: wrap;
+				 @include breakpoint(large) {  height: 55px;} 
+	            }
+			 & svg {
+			     width: 40px;
+				 height: 40px;
+				 fill: #fff;
+				}
+	         ul{
+				 margin: 0;
+		       &.notification_icon{
+				   & li{					
+				display: inline-block;
+				 vertical-align: middle;
+				margin: 0px 0 0 24px;
+			    position: relative;
+				   &  i {
+			    font-size: 28px;
+				color: #fff;
+				position: relative;
+				@include transition; 
+				@include breakpoint(large) { font-size: 22px;}	   
+					   &:hover{ color: #85cdff;}	   
+					   &:focus{ color: #85cdff;}	   
+					   & span{ 
+					position: absolute;
+					top: 0;
+					right: -3px;
+					background: #fff;
+					color: #3782c3;
+					width: 14px;
+					height: 14px;
+					border: 2px solid #3782c3;
+					border-radius: 50%;
+					font-size: 7px;
+					text-align: center;
+					font-family: 'Poppins', sans-serif;
+					padding-top: 1px;	   
+                    }
+				  }
+				&.active{
+					&:after{
+					background: url(../images/active-trip.png);
+					width: 30px;
+					height: 30px;
+					content: "";
+					position: absolute;
+					top: 27px;
+					background-repeat: no-repeat;
+					background-position: center;
+					left: 0;
+					right: 0;
+					margin: auto;
+					 @include breakpoint(large) {top: 17px; left: -4px;} 	
+					}				
+			    }
+              }				   
+			}
+		  }
+	   }	  
+
+	& .navigation{
+		 width: 100%;
+		    display: flex;
+			flex-wrap: wrap;
+			justify-content: flex-end;
+			height: 96px;
+			align-items: center;
+		  @include breakpoint(large) {height: 75px;} 
+		 ul{
+			margin: 6px 0 0 0;
+			 
+		& li{	
+			margin:0 0px 0px 93px;
+            text-align: center;
+			display: inline-block;
+			@include breakpoint(large) { margin:0 0px 0px 50px;}
+			& a{
+				font-size: 19px;
+				font-family: 'Roboto', sans-serif;
+				text-transform: uppercase;
+				display: block;
+				font-weight: 500;
+				@include breakpoint(large) {font-size: 14px;}
+				& svg{
+					width: 25px; 
+					height: 25px; 
+					fill:#ccc9c9;
+					@include transition; 
+					@include breakpoint(large) {width: 20px; height: 20px;}
+				}	
+				& span{
+					color: #2e2e2e;
+					text-transform: uppercase;
+					display: block;
+				}
+				&:hover{
+				& span{
+					color: #368fcd;
+				}
+					& svg{
+						color: #368fcd;
+						fill:#368fcd;
+					}	
+			}
+				
+			}
+			&.currunt-menu-item{
+				& span{
+					color: #368fcd;
+				}
+				& svg{
+						color: #368fcd;
+						fill:#368fcd;
+					}
+			}
+			
+		}
+	}
+  }
+}
+form{
+	
+&.search{
+	margin-left: 93px;
+	    width: 368px;
+	@include breakpoint(large) {width: 300px;}
+	& .form-group {
+    position: relative;
+	& input.searchfield{
+		width: 380px; border: 1px solid #368fcd;
+		height: 44px;
+        color: #333;
+		font-family: 'Poppins', sans-serif;
+		padding: 5px 53px 5px 10px;
+		@include breakpoint(large) {width: 300px; height: 38px; padding: 5px 49px 5px 10px;}
+		@include placeholder {
+		color: #969696;
+	    }
+		&:focus{
+			border-color: #292c2e;
+		}
+	   }
+	  & button {
+		background: #368fcd;
+		border: none;
+		margin: 0;
+		width: 44px;
+		height: 44px;
+		padding: 11px;
+		color: #fff;
+		cursor: pointer;
+		position: absolute;
+		top: 0;
+		right: 0;
+		@include breakpoint(large) {height: 38px; width: 38px;}  
+		@include transition; 
+		  &:hover{
+			  background: #1a6aa2;
+		  }  
+		& svg{
+			fill:#fff;
+		}
+      }
+	}	
+  }
+}
+
+///////////////////////stiked Style //////////////////////////
+//.afterlogin_header.sticked .navigation { height: 55px;}
+//.sticked.afterlogin_header .navigation ul li svg{ display: none;}
+//.afterlogin_header .navigation ul{ margin-top: 0px;}

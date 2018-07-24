@@ -1,0 +1,6 @@
+/** Custom Fonts Used **/
+@font-face {
+  font-family: 'Populaire';
+  src: url("../fonts/Populaire.eot?#iefix") format("embedded-opentype"), url("../fonts/Populaire.otf") format("opentype"), url("../fonts/Populaire.woff") format("woff"), url("../fonts/Populaire.ttf") format("truetype"), url("../fonts/Populaire.svg#Populaire") format("svg");
+  font-weight: normal;
+  font-style: normal; }

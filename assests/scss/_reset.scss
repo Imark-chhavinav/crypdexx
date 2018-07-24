@@ -1,0 +1,206 @@
+/** RESET only css **/
+* {
+	margin: 0;
+	padding: 0;
+	&,
+	&:after,
+	&:before {
+		@include box-sizing;
+		font-kerning: none;
+	}
+}
+
+label {
+	font-weight: normal;
+}
+
+fieldset {
+	border: none;
+	margin: 0;
+	padding: 0;
+}
+
+input,
+select,
+textarea {
+	@include appearance(none);
+	background-clip: border-box;
+	margin: 0;
+	outline: 0;
+	vertical-align: top;
+	width: 100%;
+}
+
+input[type='checkbox'],
+input[type='radio'] {
+	width: auto;
+	height: auto;
+}
+
+input[type='checkbox'] {
+	appearance: checkbox;
+}
+
+input[type='radio'] {
+	appearance: radio;
+}
+
+select[multiple],
+select[size],
+textarea {
+	height: auto;
+}
+// remove dropdown for IE10
+
+select::-ms-expand {
+	display: none;
+}
+//remove IE11 select element selected option state
+
+select:focus::-ms-value {
+	background-color: transparent;
+	color: inherit;
+}
+//Allow only vertical resizing of textareas
+
+textarea {
+	resize: vertical;
+}
+//remove search controls
+
+input[type='search']::-webkit-search-decoration {
+	display: none;
+}
+
+/* For Firefox */
+input[type='number'] {
+    -moz-appearance:textfield;
+}
+/* Webkit browsers like Safari and Chrome */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+
+a {
+	color: $primary-color;
+	text-decoration: none;
+	@include transition;
+	&:hover,
+	&:focus {
+		color: #3f3f3f;
+		text-decoration: none;
+	}
+}
+
+*:focus {
+	outline: none !important;
+}
+
+img {
+	max-width: $width-full;
+}
+
+b,
+strong {
+
+	font-weight: normal;
+}
+
+em,
+i {
+	font-style:normal;
+}
+
+.clr {
+	border: 0;
+	clear: both;
+	height: 0;
+}
+
+body,
+html {
+	width: $width-full; height: $height-full; font-family: $main-font;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+	font-weight: normal;
+	margin: 0;
+}
+p{
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    margin-bottom: 40px;
+    letter-spacing: 0.03em;
+    line-height: 1.9;
+	 @include breakpoint(large) {font-size: 15px;margin-bottom: 20px;}
+	&:last-child{ margin-bottom: 0px;}
+	
+}
+ h2{
+	font-family: 'Poppins', sans-serif;
+	font-size: 50px;
+	font-weight: 500;
+	letter-spacing: 0.02em;
+	margin-bottom: 30px;
+    line-height: 1.2;
+	 @include breakpoint(large) {font-size: 28px; margin-bottom: 20px;}
+}
+li{
+	list-style: none;
+}
+.inline {
+	display: inline-block !important;
+}
+
+.block {
+	display: block !important;
+}
+
+.shown {
+	display: inline-block;
+
+	&.block {
+		display: block;
+	}
+}
+
+.hidden {
+	display: none;
+}
+
+.btn-hover:hover {
+    background: #2e2e2e!important;
+    transition: 0.5s all ease;
+	color: #fff;
+}
+span,i{
+	transition: all 0.1s ease-in-out 0s;
+}
+.btn-hover:hover i{
+	background: #65a9e8!important;
+	box-shadow: 0px 0px 0px #4d8eca!important;
+}
+.facebook.btn-hover:hover{
+	background: #5972b4!important;
+	box-shadow: 0px 0px 0px #4d8eca!important;
+}
+.envelope.btn-hover:hover{ background: #cf352d!important;box-shadow: 0px 0px 0px #e25952!important;
+}
+.envelope.btn-hover:hover i{ background:#f4635c!important }
+
+main{
+	height: 100%;
+}
+.captalize{ text-transform: capitalize;}
+.login_profile{padding-top: 167px;
+@include breakpoint(large) {padding-top: 130px;} 
+}

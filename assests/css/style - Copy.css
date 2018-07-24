@@ -1,0 +1,779 @@
+/*
+CSS Document
+Project Name: Clayton Hotels [Pre Checkin Module]
+Written By: Pankaj Thakur
+Created On: 30.01.2018 
+Last Modified: 19.02.2018
+*/
+@import url('https://fonts.googleapis.com/css?family=Muli:300,400,600,700,900');
+
+/*font-family: 'Muli', sans-serif;*/
+
+
+@font-face { font-family: 'maldron'; font-style: normal; font-weight: normal; src: url("../fonts/maldron.woff") }
+
+* { margin: 0; padding: 0 }
+
+::selection { background: #d85043; color: #fff }
+
+label { font-weight: normal; font-size: 14px; font-weight: 300; line-height: 1.57; letter-spacing: 0.4px; color: #545559 }
+
+fieldset { border: none; margin: 0; padding: 0 }
+
+input, select, textarea { -webkit-appearance: none; -moz-appearance: none; appearance: none; background-clip: border-box; margin: 0; outline: 0; vertical-align: top; width: 100% }
+
+input[type='checkbox'], input[type='radio'] { width: auto; height: auto }
+
+input[type='checkbox'] { -webkit-appearance: checkbox; -moz-appearance: checkbox; appearance: checkbox }
+
+input[type='radio'] { -webkit-appearance: radio; -moz-appearance: radio; appearance: radio }
+
+select[multiple], select[size], textarea { height: auto }
+ select::-ms-expand {
+ display: none !important
+}
+ select:focus::-ms-value {
+ background-color: transparent;
+ color: inherit;
+}
+
+textarea { resize: vertical }
+ input[type='search']::-webkit-search-decoration {
+ display: none;
+}
+
+input[type='number'] { -moz-appearance: textfield }
+ input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {
+ -webkit-appearance: none;
+ margin: 0;
+}
+
+a { color: #b3a16e; text-decoration: none; -webkit-transition: all 0.3s ease-in-out; transition: all 0.3s ease-in-out }
+
+a:hover, a:focus { color: rgba(68, 70, 71, 0.8); text-decoration: none }
+
+*:focus { outline: none !important }
+
+img { max-width: 100% }
+
+b, strong { font-weight: bold }
+
+em, i { font-style: italic }
+
+.clr { border: 0; clear: both; height: 0 }
+
+body, html { width: 100% }
+
+h1, h2, h3, h4, h5, h6, p { font-weight: normal; margin: 0; line-height: inherit }
+
+p + p { margin-top: 15px }
+
+*[hidden] { display: none }
+
+*[visible] { display: block }
+::-webkit-scrollbar {
+ min-width: 2px;
+ width: 0.15%;
+ max-width: 3px
+}
+::-webkit-scrollbar, ::-webkit-scrollbar-track, ::-webkit-scrollbar-track-piece {
+ background: #171719
+}
+::-webkit-scrollbar-button, ::-webkit-scrollbar-thumb {
+ background: rgba(255, 255, 255, 0.6)
+}
+
+svg:not(:root) { height: 100%; width: 100% }
+
+html { overflow: hidden; overflow-y: auto; -ms-overflow-style: scrollbar; -webkit-tap-highlight-color: transparent }
+
+body { background: #fff; color: rgba(68, 70, 71, 0.8); font-family: 'Muli', sans-serif; font-size: 14px; line-height: 1.45; overflow: hidden; -webkit-text-stroke: rgba(255, 255, 255, 0.01) 0.1px; -webkit-tap-highlight-color: transparent; -webkit-font-smoothing: antialiased; word-wrap: break-word }
+
+body.loaded { overflow-y: auto }
+
+.preloader { background: rgba(255, 255, 255, 0.95); position: fixed; top: 0; bottom: 0; left: 0; right: 0; z-index: 9999; -webkit-transition: all 0.3s ease-in-out; transition: all 0.3s ease-in-out }
+
+.loaded .preloader { opacity: 0; visibility: hidden; pointer-events: none }
+
+.ballLoader { display: block; position: absolute; top: 50%; left: 50%; -webkit-transform: translate(-50%, -50%); -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%) }
+
+.ballLoader > div { height: 16px; width: 16px; -webkit-border-radius: 100%; border-radius: 100%; background-color: #b3a16e; display: inline-block; -webkit-animation: ballLoader 1.4s infinite ease-in-out both 0s; animation: ballLoader 1.4s infinite ease-in-out both 0s }
+
+.ballLoader .ball:nth-of-type(1) { -webkit-animation-delay: -0.32s; animation-delay: -0.32s }
+
+.ballLoader .ball:nth-of-type(2) { -webkit-animation-delay: -0.16s; animation-delay: -0.16s }
+ @-webkit-keyframes 
+ballLoader { 100%, 80%, from {
+ -webkit-transform: scale(0);
+ transform: scale(0)
+}
+ 40% {
+ -webkit-transform: scale(1);
+ transform: scale(1)
+}
+}
+ @keyframes 
+ballLoader { 100%, 80%, from {
+ -webkit-transform: scale(0);
+ transform: scale(0)
+}
+ 40% {
+ -webkit-transform: scale(1);
+ transform: scale(1)
+}
+}
+
+/****** Header and Footer CSS From Live Site ******/
+
+header.site-header .site-header-main:before, header.site-header .site-header-main:after { display: block; content: "\0020"; height: 0; overflow: hidden }
+
+header.site-header { zoom: 1; position: relative; padding-bottom: 6px; border-bottom: none; background: #fff url(https://www.claytonhotelballsbridge.com/wp-content/themes/dalata2016/img/bg-header-nest.png) top 0 left 70% no-repeat; z-index: 10 }
+
+header.site-header .site-header-main { zoom: 1; position: relative; max-width: 1135px; margin: 0 auto }
+
+header.site-header .rf_border-header { position: absolute; bottom: 0; width: 100%!important }
+
+.site-branding { float: left }
+
+.site-title { float: left; margin: 15px; margin-left: 0 }
+
+.site-title a { width: 149px; height: 113px; background-repeat: no-repeat; background-size: 100% }
+
+h1.site-title a { text-indent: -9000em; display: inline-block; zoom: 1 }
+
+header.site-header nav, nav#mobile-menu { position: absolute; right: 0 }
+
+nav#main-nav-desktop { bottom: 23px; padding-left: 150px }
+
+nav#top-nav { top: 0; padding-left: 300px }
+
+.screenreader { position: absolute!important; top: -9999px!important; left: -9999px!important }
+
+header.site-header nav ul, nav#mobile-menu ul { text-align: right; margin: 0; padding: 0 }
+
+header.site-header nav ul li, nav#mobile-menu ul li { display: inline-block; font-family: Effra, Verdana, Arial, Helvetica, sans-serif }
+
+nav#top-nav ul li { margin: 0 0 0 10px; padding: 0 0 0 10px; font-size: 80%; background-image: linear-gradient(#909193, rgba(0, 0, 0, 0)), linear-gradient(#909193, rgba(0, 0, 0, 0)); -moz-background-size: 5px 100%; background-size: 1px 100%; background-position: 0 100%, 0 0; background-repeat: no-repeat; line-height: initial; height: 33px }
+
+nav#top-nav ul li:first-child { margin-left: 0; padding-left: 5px }
+
+nav#top-nav ul li:first-child, nav#top-nav ul li:last-child { background-image: none }
+
+nav#top-nav ul li:last-child { height: 20px }
+
+[class^='icon-']:before, [class*=' icon-']:before, .icon-shareemail2 a:before, a.rf_scrollToTop:before, .slide-overlay a.rf_scrollToTop:after, form#signup::before, nav#main-nav-mobile li a:after, nav.rf_sub_nav ul li a:after, #booking-panel-toggle:after, .home-link a:before, .slide-panel-link a.block_wrapper:after, .stars .star:before, .slide-control:before, a.addtoany_share_save:before { font-family: 'maldron' }
+
+.icon-gallery:before, .icon-email:before, .icon-call:before, .icon-website:before, .icon-map:before, .icon-gift:before, .icon-menu:before, .icon-dining:before, .icon-gps:before, .icon-shareemail2:before { padding-right: 5px }
+
+.icon-call:before { content: '\e61e' }
+
+nav#top-nav [class^="icon-"]:before, nav#top-nav [class*=" icon-"]:before { color: #7f2e2c }
+
+header.site-header nav ul li a, nav#mobile-menu ul li a { display: inline-block; text-decoration: none }
+
+nav#main-nav-desktop ul li a:hover, nav#main-nav-desktop ul li a:focus { color: #a6513f; border-bottom: 1px solid #a6513f }
+
+nav#top-nav ul li a { padding: 10px 2px 8px 2px; color: #5c4a3e }
+
+.icon-shareemail2 a:before { content: '\e60d' }
+
+nav#top-nav .icon-shareemail2 a:before { padding: 0 0 0 5px; color: #7f2e2c }
+
+.icon-website:before { content: '\e64a' }
+
+.icon-gallery:before { content: '\e62a' }
+
+.icon-map:before { content: '\e626' }
+
+.icon-gift:before { content: '\e624' }
+
+nav#top-nav ul li.button a { border-radius: 4px 4px 4px 4px; -moz-border-radius: 4px 4px 4px 4px; -webkit-border-radius: 4px 4px 4px 4px; border: none!important; color: #eedec1!important; background: #7f2e2c; background: -moz-linear-gradient(left, #7f2e2c 0%, #c56d4d 100%); background: -webkit-gradient(linear, left top, right top, color-stop(0%, #7f2e2c), color-stop(100%, #c56d4d)); background: -webkit-linear-gradient(left, #7f2e2c 0%, #c56d4d 100%); background: -o-linear-gradient(left, #7f2e2c 0%, #c56d4d 100%); background: -ms-linear-gradient(left, #7f2e2c 0%, #c56d4d 100%); background: linear-gradient(to right, #7f2e2c 0%, #c56d4d 100%); padding: 2px 14px 3px 14px }
+
+nav#top-nav ul li.button a:hover, nav#top-nav ul li.button a:focus { border: none!important; color: #fff!important; text-decoration: none!important; background: #7f2e2c; background: -moz-linear-gradient(left, #7f2e2c 0%, #c56d4d 100%); background: -webkit-gradient(linear, left top, right top, color-stop(0%, #7f2e2c), color-stop(100%, #c56d4d)); background: -webkit-linear-gradient(left, #7f2e2c 0%, #c56d4d 100%); background: -o-linear-gradient(left, #7f2e2c 0%, #c56d4d 100%); background: -ms-linear-gradient(left, #7f2e2c 0%, #c56d4d 100%); background: linear-gradient(to right, #7f2e2c 0%, #c56d4d 100%) }
+
+nav#top-nav ul li.button a nav#main-nav-desktop { bottom: 23px; padding-left: 150px }
+
+nav#main-nav-desktop ul li { margin-right: 23px; font-size: 105% }
+
+nav#main-nav-desktop ul li:last-child { margin-right: 0 }
+
+nav#main-nav-desktop ul li a { padding: 2px 1px 0 1px; color: #7f2e2c; border-bottom: 1px solid #fff }
+
+nav#main-nav-desktop ul li.home-link a { position: relative; color: #fff; z-index: 2; border-bottom: 0; margin-right: -10px }
+
+.home-link a:before { content: '\e643' }
+
+.home-link a:before { position: absolute; top: 3px; right: 11px; z-index: 0 }
+
+nav#main-nav-desktop .home-link a:before { color: #7f2e2c }
+
+/** Footer **/
+
+.footer_wrapper { position: relative; background: #fff url(../images/bg-footer-nest.png) top 0 left 50% no-repeat }
+
+.nav_001 .border_pattern, .footer_wrapper .border_pattern { height: 6px; width: 100%; background: url(../images/menu-line.jpg); background-size: 100% 9px !important; background-repeat: no-repeat; position: absolute; left: 0px; bottom: -3px }
+
+.footer_wrapper .border_pattern { top: -3px }
+
+.nav_003 { border: 0px solid green; height: auto }
+
+.nav_003 .line { width: 100%; height: auto; min-height: 80px }
+
+.nav_003 .line { border-top: 1px solid #c7b59d; width: 100% }
+
+.nav_003 .line:first-child { border-top: 0px }
+
+.nav_003 .line:before, .nav_003 .line:after { content: " "; display: block !important }
+
+.nav_003 .block100 { width: 100%; float: left; margin-right: 2.16523%; display: inline; box-sizing: border-box; display: table; min-height: 79px }
+
+.nav_003 .cell { display: table-cell; vertical-align: middle; text-align: center }
+
+.nav_003 .top { color: #5c4a3e; text-transform: uppercase; font-size: 12px; cursor: pointer; position: relative; margin-bottom: -12px; font-weight: 300 }
+
+.nav_003 .top:before { font-family: "maldron"; content: '\e61d'; color: #c56d4d; font-size: 12px; line-height: 12px; display: block; position: absolute; top: -9px; left: 50%; margin-left: -6px }
+
+.nav_003 .block25 { width: 48.91739%; float: left; margin-right: 2.16523%; display: inline; box-sizing: border-box; display: table; min-height: 79px }
+ @media only screen and (min-width: 600px) {
+
+.nav_003 .block25 { width: 23.37608%; float: left; margin-right: 2.16523%; display: inline; display: table }
+}
+
+.nav_003 .block75 { width: 48.91739%; float: left; margin-right: 2.16523%; display: inline; display: table; min-height: 79px }
+
+.nav_003 #gallery { max-width: 22% }
+
+.nav_003 .col3 { float: right; margin-right: 0% }
+
+.nav_003 .logo { height: 52px; width: 68px; background: url(../images/clayton-logo.png); background-size: 68px 52px !important; background-repeat: no-repeat; cursor: pointer; height: 52px; width: 100%; min-width: 68px; background-position: center }
+
+.nav_003 .logo { background-position: left }
+
+.nav_003 .block75 { width: 48.91739%; float: left; margin-right: 2.16523%; display: inline; display: table; min-height: 79px }
+
+.nav_003 .text_links ul { text-align: center; list-style: none; padding-left: 17%; margin: 0; padding: 0 }
+
+.nav_003 .text_links ul>li, .nav_003 .text_links a, .nav_003 .text_links p { color: #816e5d; font-size: 11px; font-weight: 300 }
+
+.nav_003 .text_links ul li { display: inline; text-align: center; border-left: 1px solid grey; padding-left: 5px; padding-right: 5px }
+
+.nav_003 .text_links ul li:first-child { border-left: 0px; padding-left: 0px }
+
+.nav_003 .text_links ul>li, .nav_003 .text_links a, .nav_003 .text_links p { color: #816e5d; font-size: 11px; font-weight: 300 }
+
+.nav_003 .text_links a { text-decoration: underline }
+
+.nav_003 .text_links a:visited { color: #5c4a3e }
+
+.but_002 { height: 31px; width: 102px; background: url(../images/dalata-logo.png); background-size: 102px 31px !important; background-repeat: no-repeat; cursor: pointer; width: 100%; min-height: 31px; min-width: 102px; background-position: right }
+
+.nav_003 .but_002 { background-position: right }
+
+.nav_003 .social_icons ul li { height: 25px; display: inline-block; padding: 6px 8px }
+
+.nav_003 .social_icons ul li a { display: inline-block }
+
+.nav_003 .social_icons ul li .facebook { height: 25px; width: 25px; background: url(../images/social-facebook.png); background-size: 100% 200% !important; background-repeat: no-repeat; background-position: top left }
+
+.nav_003 .social_icons ul li .twitter { height: 25px; width: 25px; background: url(../images/social-twitter.png); background-size: 100% 200% !important; background-repeat: no-repeat; background-position: top left }
+
+.nav_003 .social_icons ul li .google { height: 25px; width: 25px; background: url(../images/social-google.png); background-size: 100% 200% !important; background-repeat: no-repeat; background-position: top left }
+
+.nav_003 .social_icons ul li .pinterest { height: 25px; width: 25px; background: url(../images/social-pinterest.png); background-size: 100% 200% !important; background-repeat: no-repeat; background-position: top left }
+
+.nav_003 .social_icons ul li .linkedin { height: 25px; width: 25px; background: url(../images/social-linkedin.png); background-size: 100% 200% !important; background-repeat: no-repeat; background-position: top left }
+
+.nav_003 .social_icons ul li .youtube { height: 25px; width: 25px; background: url(../images/social-youtube.png); background-size: 100% 200% !important; background-repeat: no-repeat; background-position: top left }
+
+.nav_003 .galleryLink { font-size: 13px; font-weight: 400; color: #7f2e2c; text-transform: uppercase; margin: 0px 0px 0px 0px; padding: 0px 0px 0px 0px; position: relative }
+
+.nav_003 .galleryLink:before { content: "\e62a"; font-family: "maldron"; font-size: 18px; color: #7f2e2c; display: inline-block; margin-right: 15px }
+
+.nav_003 span { color: #5c4a3e; font-size: 13px; font-weight: 300 }
+
+.nav_003 .arrow:after { padding-left: 2px; font-family: "maldron"; color: #7f2e2c; content: '\e618'; font-size: 7px }
+
+.nav_003 .line:last-of-type { padding-bottom: 36px; float: left }
+
+/****** Header and Footer CSS From Live Site Ends ******/
+
+/** My elements **/
+
+
+.modal-open footer, .modal-open header, .modal-open nav, .modal-open main { -webkit-filter: blur(2px); -ms-filter: blur(2px); filter: blur(2px) }
+
+.modal { text-align: center }
+
+.modal:before { content: ''; display: inline-block; height: 100%; margin-right: -4px; vertical-align: middle }
+
+.modal-dialog { display: inline-block; text-align: left; vertical-align: middle }
+
+.input { -webkit-border-radius: 0; background: #fff; border: solid 1.5px #d7d2c8; box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.15); border-radius: 0; color: #545559; height: 36px; font-size: 14px; padding: 0 10px; letter-spacing: 0.01em; margin: 0 0 15px; -webkit-transition: all 0.3s ease-in-out; transition: all 0.3s ease-in-out }
+ .input::-webkit-input-placeholder {
+ color: #c3ccd1;
+}
+ .input:-moz-placeholder {
+ color: #c3ccd1;
+ opacity: 1;
+ filter: alpha(opacity=100);
+}
+ .input::-moz-placeholder {
+ color: #c3ccd1;
+ opacity: 1;
+ filter: alpha(opacity=100);
+}
+ .input:-ms-input-placeholder {
+ color: #c3ccd1;
+}
+
+.input:focus { border-color: #c66e4e }
+
+.inputSmall { width: 90px }
+
+textarea.input { height: 100px; margin: 0 0 20px; resize: none; padding: 10px 15px }
+
+.submitBtn { border: 0; height: 36px; color: #fff; font-size: 1.5em; text-transform: uppercase; min-width: 170px; padding: 0; width: auto; -webkit-transition: all 0.3s ease-in-out; transition: all 0.3s ease-in-out }
+
+.submitBtn:hover { background: #aa7000 }
+
+button:active, input[type="submit"]:active, .submitBtn:active { -webkit-box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.08); box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.08) }
+
+.submitBtn[disabled] { pointer-events: none; opacity: 0.7; box-shadow: inset 0 0 5px rgba(241, 241, 241, 0.47) }
+
+select.input { -webkit-appearance: none; -moz-appearance: none; background: #fff url('../images/up-down-arrow.svg'); background-position: right 10px center; background-size: 10px 18px; background-repeat: no-repeat; padding-right: 25px }
+
+.wow { visibility: visible }
+
+.myBtn { border-radius: 3px; border: 0; color: #fff; background: #7f2e2c; background: -moz-linear-gradient(left, #7f2e2c 0%, #c56d4d 100%); background: -webkit-gradient(linear, left top, right top, color-stop(0%, #7f2e2c), color-stop(100%, #c56d4d)); background: -webkit-linear-gradient(left, #7f2e2c 0%, #c56d4d 100%); background: -o-linear-gradient(left, #7f2e2c 0%, #c56d4d 100%); background: -ms-linear-gradient(left, #7f2e2c 0%, #c56d4d 100%); background: linear-gradient(to right, #7f2e2c 0%, #c56d4d 100%); padding: 2px 14px 3px 14px; display: inline-block; font-size: 16px; font-weight: 600; line-height: 0.95; margin: 0; padding: 10px; text-align: center; min-width: 170px; text-transform: uppercase; position: relative }
+
+.myBtn.wider { width: 100%; max-width: 268px }
+
+.myBtn:hover { background: #83361c }
+
+.flexRow, .flexColumn { display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; flex-direction: row; justify-content: space-between }
+
+.flexRow { -webkit-flex-wrap: wrap; -ms-flex-wrap: wrap; flex-wrap: wrap; align-items: stretch; -webkit-align-items: stretch }
+
+.flexRow:before, .flexRow:after { display: none }
+
+.flexColumn { flex-direction: column }
+
+.alignBottom { -webkit-box-align: end; -ms-flex-align: end; align-items: flex-end }
+
+.flexNowrap { -ms-flex-wrap: nowrap; flex-wrap: nowrap }
+
+.noPaddingRow { margin: 0 }
+
+.noPaddingRow *[class*="col-"] { padding: 0 }
+
+.checkin__home { background: #f3eeec; padding: 40px 0 }
+
+.checkin__wrap { background: #fff; box-shadow: 0 2px 4px 0 rgba(93, 75, 63, 0.3); margin: 0 auto; max-width: 750px }
+
+.checkin__wrap h1, .checkin__wrap h2, .checkin__addons h1, .checkin__addons h2 { font-size: 26px; font-weight: 300; letter-spacing: 0.8px; color: #802f2d; text-transform: uppercase; margin: 0 0 15px }
+
+.checkin__wrap p { font-size: 14px; font-weight: 300; line-height: 1.62; color: #5d4b3f }
+
+.checkin__loginBanner { margin: 0 0 22px }
+
+.checkin__loginContent { padding: 0 96px 30px }
+
+.checkin__login form { margin: 20px 0 0 }
+
+.checkin__login form .submit { margin: 10px 0 0 }
+
+.bookingSteps { max-width: 555px; margin: 0 auto 30px; position: relative }
+
+.bookingSteps:before { content: ""; display: block; height: 2px; background: #c66e4e; position: absolute; top: 50%; transform: translateY(-50%); -webkit-transform: translateY(-50%); left: 2px; right: 2px; z-index: 0 }
+
+.bookingSteps ul { margin: 0; padding: 0; position: relative; z-index: 1 }
+
+.bookingSteps ul li { width: 12px; height: 12px; background-color: #f3eeec; border: solid 2px #c66e4e; border-radius: 50%; list-style: none; font-size: 0 }
+
+.bookingSteps ul li.completed { background-color: #c66e4e; border: solid 2px #c66e4e }
+
+.checkin__booking { padding: 30px 30px 40px }
+
+.bookingContent { background: #f3eeec; padding: 20px; margin: 0 0 30px }
+
+.checkin__home table td { font-size: 14px; font-weight: 300; line-height: 1.29; color: #5d4b3f; padding: 6px 0; vertical-align: top }
+
+.checkin__home table td:first-child { padding-right: 30px; width: 47.5% }
+
+.roomDetails { margin: 20px 0 0 }
+
+.roomDetails h3 { margin: 0 0 10px; border-bottom: 1px solid rgba(68, 48, 23, 0.2); font-size: 14px; font-weight: 700; line-height: 1.29; color: #5d4b3f; padding: 0 0 8px; text-transform: uppercase }
+
+.roomDetails h3 strong, .roomDetails h3 a { color: #3fa89a }
+
+.roomAmenities { margin: 25px 0 0 }
+
+.customCheckbox, .customRadio { line-height: 1; margin: 0 0 10px }
+
+.customCheckbox label, .customRadio label { font-size: 14px; font-weight: 300; color: #5d4b3f; letter-spacing: normal; line-height: 20px; vertical-align: top; cursor: pointer; margin: 0; margin-bottom: 20px; padding-left: 35px; position: relative; -webkit-transition: all 0.3s ease-in-out 0s; transition: all 0.3s ease-in-out 0s }
+
+.customCheckbox label [data-check] { background: #fff; border: solid 2px #d7d2c8; box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.15); display: block; position: absolute; top: 0px; left: 0; line-height: 16px; height: 20px; width: 20px; text-align: center }
+
+.customCheckbox label input[type='checkbox'] { position: absolute; opacity: 0; filter: alpha(opacity=0); z-index: -1 }
+
+.customCheckbox label input[type='checkbox']:checked ~ *[data-check] { background: #c66e4e; border-color: #c66e4e }
+
+.customCheckbox label input[type='checkbox']:checked ~ *[data-check]:after { content: "\f00c"; font: normal normal normal 14px/1 FontAwesome; color: #fff }
+
+.customRadio label [data-radio] { background: #fff; border: solid 2px #d7d2c8; box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.15); display: block; position: absolute; top: 0px; left: 0; line-height: 16px; height: 20px; width: 20px; border-radius: 50%; text-align: center }
+
+.customRadio label input[type='radio'] { position: absolute; opacity: 0; filter: alpha(opacity=0); z-index: -1 }
+
+.customRadio label input[type='radio']:checked ~ *[data-radio]:after { background: #c66e4e; content: ""; height: 10px; width: 10px; border-radius: 50%; position: absolute; display: block; top: 0; left: 0; right: 0; bottom: 0; margin: auto }
+
+.bookingPreferences p { letter-spacing: 0.4px }
+
+.bookingPreferences textarea.input { height: 70px; margin: 10px 0 0 }
+
+.roomAmenities ul { margin: 0 0 15px; padding: 0 }
+
+.roomAmenities ul li { list-style: none; font-size: 14px; font-weight: 300; line-height: 1.29; letter-spacing: normal; text-align: left; color: #5d4b3f; padding: 0 0 0 36px; position: relative }
+
+.roomAmenities ul li + li { margin-top: 18px }
+
+.roomAmenities ul li em { font-size: 13px }
+
+.roomAmenities ul li:before { position: absolute; left: 0; top: 2px }
+
+.roomAmenities ul li.checkedIn { color: #3fa89a }
+
+.roomAmenities ul li.checkedIn:before { content: "\f00c"; font: normal normal normal 16px/1 FontAwesome }
+
+.roomAmenities ul li.notAvailable { color: #979ea1 }
+
+.roomAmenities ul li.notAvailable:before { content: "\f05e"; font: normal normal normal 16px/1 FontAwesome }
+
+.roomAmenities ul li label { color: #5d4b3f; font-size: 14px; letter-spacing: normal; padding-left: 0; position: static; margin-bottom: 0 }
+
+.checkedIn h2 { color: #3fa89a }
+
+.checkin__addons { padding: 20px 0 0 }
+
+.checkin__adddonHeader { margin: 0 0 40px }
+
+.checkin__adddonHeader h1 { display: inline-block; margin: 0; vertical-align: baseline }
+
+.checkin__adddonHeader .roomSelected { display: inline-block; margin-left: 15px; font-size: 18px; font-weight: 300; letter-spacing: 0.5px; color: #c66e4e }
+
+.checkin__preferences { background: #fff; box-shadow: 0 2px 4px 0 rgba(93, 75, 63, 0.3); padding: 25px 95px 30px }
+
+.checkin__addons p { font-size: 14px; font-weight: 300; line-height: 1.62; letter-spacing: normal; color: #5d4b3f }
+
+.checkin__addons textarea.input { height: 70px; margin: 10px 0 0 }
+
+.checkin__enhanceYourStay { background: #fff; box-shadow: 0 2px 4px 0 rgba(93, 75, 63, 0.3); margin: 30px 0 0; padding: 32px 95px 40px }
+
+.checkin__roomItemsBox { background: #f3eeec; margin: 0 -30px 25px; padding: 20px 30px 30px }
+
+.checkin__roomItemsBox h3 { font-size: 17px; letter-spacing: 0.6px; margin: 0 0 15px; color: #c66e4e }
+
+.checkin__roomItemsBox h4 { font-size: 17px; letter-spacing: 0.5px; color: #5d4b3f; margin: 0 0 10px }
+
+.checkin__roomItemsBox figure { width: 166px }
+
+.checkin__roomItemsBox .roomItemsInfo { width: 755px }
+
+.extraOptions h3 { font-size: 17px; letter-spacing: 0.6px; text-align: left; color: #c66e4e; margin: 0 0 25px }
+
+.extraOptionsBox + .extraOptionsBox { border-top: 1px solid #d7d2c8; margin: 20px 0 0; padding: 20px 0 0 }
+
+.extraOptionsBox figure { width: 166px }
+
+.extraOptionsBox .extraOptionsInfo { width: 458px }
+
+.extraOptionsBox h4 { font-size: 17px; letter-spacing: 0.5px; margin: 0 0 15px; color: #5d4b3f }
+
+.extraOptionsBox .extraOptionsAction { -ms-flex-item-align: center; align-self: center; text-align: right; width: 265px }
+
+.extraOptionsBox .extraOptionsAction .optionPrice { vertical-align: middle; width: 165px; text-align: center; display: inline-block; font-size: 25px; line-height: 36px; letter-spacing: 0.7px; text-align: center; color: #c66e4e }
+
+.extraOptionsBox .extraOptionsAction .optionPrice small { font-size: 14px; font-weight: 300; line-height: 1.62; text-align: center; letter-spacing: normal; color: #5d4b3f; display: block; margin: 5px 0 0 }
+
+.pt_Quantity { display: inline-block; margin: 0 0 0 20px; position: relative; vertical-align: middle }
+
+.pt_Quantity input { box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.2); color: #545559; background-color: #ffffff; border: solid 1px #d7d2c8; font-size: 14px; font-weight: 300; min-width: 45px; height: 36px; float: left; display: block; padding: 0 25px 0 2px; margin: 0; text-align: center; width: 70px }
+
+.pt_Quantity input:focus { outline: 0 }
+
+.pt_Quantity .pt_QuantityNav { float: left; position: relative; height: 36px }
+
+.pt_Quantity .pt_QuantityNav .pt_QuantityButton { position: relative; cursor: pointer; width: 25px; text-align: center; color: #b9b9b9; font-size: 20px; font-family: "Georgia", serif!important; line-height: 10px; right: 0; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; position: absolute; height: 14px }
+
+.pt_Quantity .pt_QuantityNav .pt_QuantityButton:active { color: #555 }
+
+.pt_Quantity .pt_QuantityNav .pt_QuantityButton.pt_QuantityUp { top: 4px }
+
+.pt_Quantity .pt_QuantityNav .pt_QuantityButton.pt_QuantityDown { bottom: 5px }
+
+.pt_Quantity .pt_QuantityNav .pt_QuantityButton svg { fill: #b9b9b9; height: 8px; width: 10px }
+
+.pt_Quantity .pt_QuantityNav .pt_QuantityButton:active svg { fill: #555 }
+
+.extraOptionsBox .extraOptionsAction .perNightPrice { text-align: left; width: 185px; display: inline-block }
+
+.extraOptionsBox .extraOptionsAction .perNightPrice .nightOption { -webkit-box-align: center; -ms-flex-align: center; align-items: center }
+
+.extraOptionsBox .extraOptionsAction .perNightPrice .nightOption + .nightOption { margin-top: 15px }
+
+.extraOptionsBox .extraOptionsAction .perNightPrice .nightOption .nightPrice { font-size: 20px; letter-spacing: 0.6px; color: #c66e4e; display: inline-block; vertical-align: -1px }
+
+.extraOptionsBox .extraOptionsAction .perNightPrice .nightOption .customCheckbox { margin: 0; display: inline-block; vertical-align: 3px }
+
+.extraOptionsBox .extraOptionsAction .perNightPrice .nightOption label { margin: 0 }
+
+.extraOptionsBox .extraOptionsAction .parkingPriceOptions { -webkit-box-align: center; -ms-flex-align: center; align-items: center; width: 100% }
+
+.extraOptions .continueBtn { margin: 22px 0 0; text-align: right }
+
+.extraOptions .continueBtn .submit { max-width: 263px }
+
+.addAddress { padding: 10px 65px 0 }
+
+.addAddress form .input { max-width: 363px }
+
+.addAddress form label { display: block; font-size: 14px; font-weight: normal; line-height: 1.57; letter-spacing: 0.4px; text-align: left; color: #5d4b3f }
+
+.addAddress form a { font-size: 14px; line-height: 1.14; letter-spacing: normal; text-align: left; color: #c66e4e; border-bottom: 1px solid }
+
+.addAddress form a:hover { color: #333 }
+
+.addAddress form .textLink { word-break: keep-all; white-space: nowrap }
+
+/** Hack for IE Browser  **/
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+
+.addAddress form .textLink { letter-spacing: -0.05em }
+}
+/** For IE 12+ **/
+@supports (-ms-ime-align:auto) {
+  .addAddress form .textLink { letter-spacing: -0.05em }
+}
+
+.addAddress .paymentSummary { margin: 30px 0 40px }
+
+.addAddress .paymentSummary table td:last-child { text-align: right }
+
+.addAddress .paymentSummary table + table { margin-top: 15px }
+
+.addAddress .paymentSummary h4 { font-size: 14px; font-weight: 600; letter-spacing: normal; margin: 15px 0; color: #5d4b3f }
+
+.addAddress .paymentSummary table td strong { font-size: 18px; font-weight: normal; letter-spacing: normal; color: #c66e4e }
+
+hr { border-top: 1px solid #dcdcdc }
+
+.addAddress .paymentOptions h2 { margin: 0 0 20px }
+
+.addAddress .paymentOptions label { display: inline-block; vertical-align: top }
+
+.addAddress .paymentOptions .submit { max-width: 262px }
+
+.payNow .cardHelp { position: relative; padding: 32px 0 0 }
+
+.payNow .cardHelp .infoLink { border-bottom: 0; background: #7f2e2c; background: -moz-linear-gradient(left, #7f2e2c 0%, #c56d4d 100%); background: -webkit-linear-gradient(left, #7f2e2c 0%, #c56d4d 100%); background: -ms-linear-gradient(left, #7f2e2c 0%, #c56d4d 100%); background: linear-gradient(to right, #7f2e2c 0%, #c56d4d 100%); height: 24px; width: 24px; color: #fff; display: block; text-align: center; line-height: 24px; font-size: 20px; border-radius: 50% }
+
+.payNow .cardHelp .infoLink:hover { color: #eedec1 }
+
+.payNow .cardHelpInfo { color: #fff; background: #c66e4e; box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1); padding: 10px; border-radius: 4px; position: absolute; top: 0; left: 40px; width: 218px; pointer-events: none; opacity: 0; visibility: hidden; transition: all 0.3s ease; -webkit-transition: all 0.3s ease; z-index: 10 }
+
+.payNow .cardHelp .infoLink:hover + .cardHelpInfo, .payNow .cardHelp .infoLink.clicked + .cardHelpInfo { pointer-events: auto; opacity: 1; visibility: visible }
+
+.payNow .cardHelpInfo:after { content: ''; position: absolute; top: 50%; right: 100%; margin-top: -10px; width: 0; height: 0; border-right: 12px solid #c66e4e; border-top: 10px solid transparent; border-bottom: 10px solid transparent }
+
+.payNow .cardHelpInfo p { color: #fff; font-size: 12px; font-weight: normal; line-height: 1.42; letter-spacing: normal; padding: 0 10px 0 0 }
+
+.payNow .cardHelpInfo img { height: auto }
+
+.payNow .customCheckbox { margin: 20px 0 0 }
+
+.thankYouPage .checkin__booking { padding: 30px 95px 40px }
+
+.thankYouPage .checkin__checked { margin: 20px 0 0 }
+
+.thankYouPage .checkin__booking h1 { margin: 0 0 25px }
+
+.thankYouPage .checkin__booking h4 { font-size: 14px; line-height: 1.57; letter-spacing: normal; text-align: left; color: #5d4b3f; margin: 0 0 20px }
+
+.thankYouPage table td:first-child { width: 52% }
+
+.thankYouPage table td strong { font-size: 18px; font-weight: normal; letter-spacing: normal; color: #c66e4e }
+
+.thankYouPage table td .checkIn { color: #3fa89a; font-weight: normal }
+
+.thankYouPage table + table, .thankYouPage table + p { margin-top: 20px }
+ @media screen and (max-width:1199px) {
+
+header.site-header nav, nav#mobile-menu { right: 44px }
+
+nav#main-nav-desktop { bottom: 23px; padding-left: 20px }
+
+nav#main-nav-desktop ul li { margin-right: 11px; font-size: 100% }
+
+nav#top-nav { padding-left: 220px }
+
+.site-title a { width: 120px; height: 93px; background-size: 100% }
+
+.checkin__roomItemsBox .roomItemsInfo { width: 565px }
+
+.extraOptionsBox .extraOptionsInfo { width: 330px }
+
+.extraOptionsBox .extraOptionsAction { width: 215px }
+
+.extraOptionsBox .extraOptionsAction .optionPrice { width: 125px; font-size: 22px }
+}
+ @media only screen and (max-width:991px) {
+
+.checkin__preferences { padding: 25px 15px 30px }
+
+.customCheckbox label, .customRadio label { font-size: 13px; padding-left: 30px }
+
+.checkin__enhanceYourStay { padding: 32px 15px 40px }
+
+.checkin__roomItemsBox { margin: 0 -15px 25px; padding: 15px }
+
+.checkin__roomItemsBox .roomItemsInfo { width: 510px }
+
+.extraOptionsBox .extraOptionsInfo { width: 280px }
+
+.extraOptionsBox h4 { font-size: 16px; letter-spacing: 0.2px; margin: 0 0 5px }
+
+.addAddress { padding: 10px 15px 0 }
+
+.addAddress form .input { max-width: 410px }
+}
+ @media only screen and (max-width: 767px) {
+
+header.site-header nav { right: 0; position: relative }
+
+header.site-header nav ul { text-align: left }
+
+header.site-header nav ul li { display: block; border-top: solid 1px #E3E2DF }
+
+header.site-header nav ul li:first-child { border-top: none }
+
+.navbar { margin-bottom: -5px; background-color: #fff; color: #000; background: #fff url(../images/bg-header-nest.png) top 0 left 70% no-repeat }
+
+.navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover { background: none }
+
+.navbar-default .navbar-toggle { border: none }
+
+.navbar-default .navbar-nav>li>a { width: 100% }
+
+.navbar-default .navbar-nav>li>a:active { color: red; font-size: 10px }
+
+.angle-right-mobile { float: right; font-size: 20px }
+
+.mobile-logo { position: absolute; top: 5px; left: 0; max-width: 250px; margin: 5px }
+
+.site-branding { float: left; margin-left: 20px }
+
+.footer_wrapper .nav_003 .line:nth-child(2) { display: none }
+
+.nav_003 .line:last-child .block75 { width: 100% }
+
+.checkin__booking { padding: 10px 10px 30px }
+
+.checkin__home table td:first-child { padding-right: 20px; width: 49%; word-break: normal }
+
+.bookingContent { padding: 20px 10px }
+
+.roomAmenities { padding: 0 20px }
+
+.bookingPreferences textarea.input { margin: 10px 0 30px }
+
+.roomDetails { margin: 15px 0 0 }
+
+.roomDetails h3 { font-size: 13px; border-bottom: 0; padding: 6px 0; position: relative }
+
+.roomDetails h3 a.roomToggler { font-size: 11px; font-weight: 700; line-height: 1; text-align: center; color: #5d4b3f; border-radius: 3px; border: solid 1px #d7d2c8; display: block; position: absolute; right: 0; top: 0; padding: 8px 10px; width: 60px }
+
+.roomDetails h3 a.roomToggler:hover { border-color: #c66e4e; background: #c66e4e; color: #fff }
+
+.roomDetails h3 a.roomToggler:after { content: "Show" }
+
+.roomDetails h3 a.roomToggler.open:after { content: "Hide" }
+
+.mobileCollapse { display: none }
+
+.checkin__wrap h1, .checkin__wrap h2, .checkin__addons h1, .checkin__addons h2 { font-size: 24px }
+
+.checkin__home table td { font-size: 13px }
+
+.checkedIn { padding: 0 10px }
+
+.checkedIn .roomAmenities { padding: 0 }
+
+.checkin__roomItemsBox .roomItemsInfo { width: 100%; margin: 10px 0 0 }
+
+.extraOptions { max-width: 400px; margin: 0 auto }
+
+.extraOptionsBox figure,.extraOptionsBox figure img { width:100%}
+
+.extraOptionsBox .extraOptionsInfo { width: 100%; margin: 10px 0 }
+
+.extraOptionsBox .extraOptionsAction { display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; flex-direction: row; justify-content: space-between; width: 100% }
+
+.extraOptionsBox .extraOptionsAction .optionPrice { width: auto }
+
+.extraOptionsBox .extraOptionsAction .optionPrice small br { display: none }
+
+.extraOptionsBox .extraOptionsAction .perNightPrice { width: 100%; display: block }
+
+.extraOptions .continueBtn .submit { max-width: 100% }
+
+.checkin__roomItemsBox { margin: 0 auto 25px; max-width: 400px }
+
+.checkin__roomItemsBox figure, .checkin__roomItemsBox figure img { width: 100%}
+
+.checkin__enhanceYourStay { padding: 15px 15px 40px }
+
+.checkin__enhanceYourStay h2 { font-size: 20px; max-width: 400px; margin: 0 auto 15px }
+
+.checkin__addons { padding: 10px 0 0 }
+
+.checkin__adddonHeader { margin: 0 0 20px }
+
+.checkin__adddonHeader h1 { display: block; font-size: 20px }
+
+.checkin__adddonHeader .roomSelected { display: block; margin-left: 0; font-size: 15px }
+
+.bookingSteps { margin: 0 auto 25px }
+
+hr { margin-top: 15px; margin-bottom: 15px }
+
+.thankYouPage .checkin__booking { padding: 20px 15px 40px }
+
+.thankYouPage .checkin__checked table td:last-child { text-align:right}
+
+.thankYouPage table + table, .thankYouPage table + p { margin-top: 15px }
+
+.checkin__home table td { word-break: break-all }
+
+.addAddress form .input { max-width: 100% }
+
+.addAddress form .payNow .input { max-width: 100% }
+
+.addAddress { padding: 10px 5px 0 }
+
+label.spacerOnly { font-size: 0 !important }
+
+.addAddress form .textLink { margin: 0 0 15px; display: inline-block }
+
+.payNow .cardHelp { padding: 32px 3px 0 0; text-align: right }
+
+.payNow .cardHelp .infoLink { display: inline-block; vertical-align: top }
+
+.payNow .cardHelpInfo { top: auto; left: auto; bottom: 40px; right: 0; text-align: left }
+
+.payNow .cardHelpInfo:after { top: 100%; right: 3px; margin-top: 0; border-bottom: 0; border-top: 12px solid #c66e4e; border-left: 10px solid transparent; border-right: 10px solid transparent }
+}
+ @media (max-width:540px) {
+
+.checkin__loginContent { padding: 0 15px 30px }
+
+.extraOptions .continueBtn .submit, .addAddress .paymentOptions .submit { max-width: 100% }
+}

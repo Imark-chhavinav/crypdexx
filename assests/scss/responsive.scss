@@ -1,0 +1,10 @@
+/** Custom Fonts Used **/
+
+
+ 
+.container {
+	@include breakpoint(x-large) {
+		max-width:1470px;
+		.homeBanner{min-height: 580px;}
+	}
+} 

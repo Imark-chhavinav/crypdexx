@@ -1,0 +1,33 @@
+footer{
+	padding: 20px 0;
+	@include breakpoint(large) {padding: 15px 0;}
+	& .copiright{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	& p{
+		color: #010101;
+		font-size: 16px;
+		margin: 0;
+		font-family: 'Poppins', sans-serif;
+		@include breakpoint(large) { font-size: 14px;}
+	}
+		& ul{
+			margin: 0;
+			& li{
+				display: inline-block;
+				margin-left: 30px;
+				& a{
+					color: #010101;
+					font-size: 16px;
+					@include breakpoint(large) { font-size: 14px;}
+					&:hover{
+						color: #65a9e8;
+						
+					}
+				}
+			}
+		}	
+	
+}
+}

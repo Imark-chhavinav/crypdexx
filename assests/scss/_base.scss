@@ -1,0 +1,382 @@
+/** BASE css **/
+.preloader {
+	@include filter(blur,0px);
+	background: rgba(255, 255, 255, 0.95);
+	@include cover-all(fixed);
+	z-index: 999999;
+	@include transition;
+	& .ballLoader {
+		display: block;
+		@include absolutecenter;
+
+		& > div {
+			@include circle(1em);
+			margin-right: 0.1em;
+			background-color: #368fcd;
+			display: inline-block;
+			@include animation(ballLoader, 1.4s, infinite, ease-in-out, both, 0s);
+
+			&.ball {
+				&:nth-of-type(1) {
+					-webkit-animation-delay: -0.32s;
+					animation-delay: -0.32s;
+				}
+				&:nth-of-type(2) {
+					-webkit-animation-delay: -0.16s;
+					animation-delay: -0.16s;
+				}
+			}
+		}
+	}
+}
+
+
+
+
+.loaded {
+	& .preloader {
+		opacity: 0;
+		visibility: hidden;
+		pointer-events: none;
+	}
+}
+
+
+@include keyframes( ballLoader )
+{
+	100%,
+	80%,
+	from {
+        @include transform( scale(0) );
+    }
+
+  40% {
+        @include transform( scale(1) );
+    }
+}
+
+//Bootstrap column gutter width decreased for mobile view
+.row {
+	@include breakpoint(mobile) {
+		margin-left: -8px;
+		margin-right: -8px;
+	}
+	& *[class*="col-"] {
+		@include breakpoint(mobile) {
+			padding-left: 8px;
+			padding-right: 8px;
+		}
+	}
+}
+
+input,textarea {
+	background: #fff;
+	border: solid 1px #c5c5c5;
+	@include border-radius(0);
+	color: #545559;
+	line-height: normal;
+	padding:10px 10px;
+	letter-spacing: 0.01em;
+	max-width: 333px;
+	width: 100%;
+	font-size: 15px;
+	resize: none;
+	height: 52px;
+	max-width: 100%;
+	@include breakpoint(large) { padding:5px 10px; height: 40px;}
+	@include transition;
+	@include placeholder {
+		color: #c3ccd1;
+	}
+	&:focus { 
+		border-color: #368fcd;
+		    outline: none;
+	}
+}
+
+input[type="submit"]{
+	line-height: normal;
+	background: #3690ce;
+	color: #fff;
+	font-size: 16px;
+	text-align: center;
+	width: 87px;
+	@include transition;
+	border-radius: 2px;
+    border: transparent;
+	cursor: pointer;
+	height: 51px;
+	font-weight: 400;
+	font-family: 'Poppins', sans-serif;
+	@include breakpoint(large) { height: 40px ;   margin-top: 20px;}
+	&:hover{
+		background: #464646;
+	}
+	
+}
+.sticked{
+	//& input { line-height: 2.5;}
+	//& input[type="submit"] {  line-height: 2.5;
+	//@include breakpoint(large) {
+	//	line-height: normal;}
+	//}
+}
+select.input {
+	@include appearance(none);
+	background: #fff url("../images/caret-down.svg");
+	background-position: right 10px center;
+	background-size: 10px 18px;
+	background-repeat: no-repeat;
+	padding-right: 25px;
+}
+select.custom_select {
+	@include appearance(none);
+	background: #fff url("../images/drowpdown.png");
+	background-position: right 10px center;
+	background-size: 9px;
+	background-repeat: no-repeat;
+	padding-right: 25px;
+	height: 51px;
+	padding-left: 12px;
+	color: #bfbfbf;
+	font-size: 14px;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 400;
+	cursor: pointer;
+	border: 1px solid #c5c5c5;
+	&:focus{border-color: #368fcd}
+	@include breakpoint(large) { height: 40px ;}
+}
+
+
+textarea.input {
+	height: 100px;
+	margin: 0 0 20px;
+	resize: none;
+	padding: 10px 15px;
+	
+}
+///////////////////////////////////////////////////  redio button ////////////////////
+ 
+[type="radio"]:checked,
+[type="radio"]:not(:checked) {
+    position: absolute;
+    left: -9999px;
+}
+[type="radio"]:checked + label,
+[type="radio"]:not(:checked) + label
+{
+    position: relative;
+    padding-left: 22px;
+    cursor: pointer;
+    line-height: 26px;
+    display: inline-block;
+    color: #474747;
+}
+[type="radio"]:checked + label:before,
+[type="radio"]:not(:checked) + label:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 5px;
+    width: 14px;
+    height: 14px;
+    border: 1px solid #474747;
+    border-radius: 100%;
+    background: #fff;
+}
+.my_acount [type="radio"]:checked + label:before, .my_acount  [type="radio"]:not(:checked) + label:before{top: 1px}
+
+[type="radio"]:checked + label:after,
+[type="radio"]:not(:checked) + label:after {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background: #474747;
+    position: absolute;
+    top: 8px;
+    left: 3px;
+    border-radius: 100%;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+[type="radio"]:not(:checked) + label:after {
+    opacity: 0;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+}
+[type="radio"]:checked + label:after {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
+//////////////////////////////////////////////////////// custom file input //////////////////////////////////////
+/***** file custom ***************/
+.input-file-container {
+    position: relative;
+    width: 100%;
+    margin-top: 15px;
+}
+.js .input-file-trigger {
+    display: block;
+    color: #6d6e72;
+    transition: all .4s;
+    cursor: pointer;
+    text-align: center;
+    font-size: 16px;
+}
+.js .input-file {
+  position: absolute;
+  top: 0; left: 0;
+  width: 225px;
+  opacity: 0;
+  padding: 14px 0;
+  cursor: pointer;
+}
+.js .input-file:hover + .input-file-trigger,
+.js .input-file:focus + .input-file-trigger,
+.js .input-file-trigger:hover,
+.js .input-file-trigger:focus {
+  color: #cf2c3d;
+}
+
+.file-return {
+  margin: 0;
+}
+.file-return:not(:empty) {
+  margin: 1em 0;
+}
+.js .file-return {
+  font-style: italic;
+  font-size: .9em;
+  font-weight: bold;
+}
+.js .file-return:not(:empty):before {
+  content: "Selected file: ";
+  font-style: normal;
+  font-weight: normal;
+}
+.file {
+    display: none;
+}
+.input-file-container span {
+    height: 160px;
+    width: 160px;
+    background: #d8d8d8;
+    background-repeat: no-repeat;
+    background-position: center top 25px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 1px solid #d8d8d8; cursor: pointer;    margin: 60px auto 15px;
+	 @include breakpoint(large) {margin: 20px auto 10px;}
+	
+}
+.input-file-container strong { display: block; text-decoration: underline;}
+.input-file-container label{ cursor: pointer;}
+.modal .close{opacity: 1; cursor: pointer}
+.modal .close i{
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    right: -12px;
+    top: -10px;
+    width: 35px;
+    height: 35px;
+    background: #fff;
+    border-radius: 100%;
+    box-shadow: 0px 0px 5px #b3b3b3;
+    opacity: 1;
+    font-size: 22px;
+    color: #d6d1d1;
+	@include transition;
+	line-height: 35px;
+    text-shadow: none;
+	
+}
+.form-control:focus {
+    box-shadow: none;
+}
+.modal .close:hover i{ background: #386ab3; box-shadow: none; color: #fff;}
+.modal .modal-body p{ font-size: 24px;    line-height: 1.5;} 
+.modal#otp {    padding-left: 44%; text-align: center; z-index: 9999;}
+.modal .modal-dialog { max-width: 617px; border-radius: 20px;}
+.modal input{max-width: 100%; width: 100%;line-height: 3.2;margin-top: 0px;}
+.modal input[type="text"]{background: #f5f5f5; text-align: center; font-size: 12px; border-color: #c5c5c5; height: 50px;
+	line-height: normal;
+	@include breakpoint(large) {height: 35px;}
+	@include placeholder {color: #474747;}
+}
+.modal input[type="submit"]{height: 50px; line-height: normal;
+	@include breakpoint(large) {height: 40px;}
+}
+.modal-dialog-centered{height: 100%;min-height: 100%; margin-top: 0;  margin-bottom: 0;}
+.modal a{ color: #696969; 
+	&:hover{ color: #386ab3;}
+}
+#otp .modal-content{ padding: 20px 60px; border-radius: 15px;}
+.modal input[type="text"]:focus{ border-color: #386ab3} 
+////////////  add wallet popup ///////////////////
+.modal#addwallet{
+	& .modal-dialog{
+		max-width: 565px;
+	}
+}
+///////////////////////////// custom check box ////////////////////////////////
+/*Checkboxes styles*/
+.styled-checkbox {
+  position: absolute;
+  opacity: 0;
+}
+.boxes label {
+	color: #139f34!important;
+}
+.styled-checkbox + label {
+  position: relative;
+  cursor: pointer;
+  padding: 0;
+  color: #139f34;
+}
+.styled-checkbox + label:before {
+  content: '';
+  margin-right: 10px;
+  display: inline-block;
+  vertical-align: text-top;
+  width: 16px;
+  height: 16px;
+  background: #139f34;
+	
+	
+}
+.styled-checkbox:hover + label:before {
+  background: #0d7926;
+}
+
+.styled-checkbox:checked + label:before {
+  background: #0d7926;
+}
+.styled-checkbox:disabled + label {
+  color: #fff;
+  cursor: auto;
+}
+.styled-checkbox:disabled + label:before {
+  box-shadow: none;
+  background: #ddd;
+}
+.styled-checkbox:checked + label:after {
+  content: '';
+  position: absolute;
+  left: 3px;
+  top: 9px;
+  background: white;
+  width: 2px;
+  height: 2px;
+  box-shadow: 2px 0 0 white, 4px 0 0 white, 4px -2px 0 white, 4px -4px 0 white, 4px -6px 0 white, 4px -8px 0 white;
+  -webkit-transform: rotate(45deg); transform: rotate(45deg);}
+.padding-no-top{padding-top: 0px!important;}
+.padding-no-bottom{padding-bottom: 0px!important;}
+.padding-no-left{padding-left: 0px!important;}
+.padding-no-right{padding-right: 0px!important;}
+.margin-no-top{margin-top: 0px!important;}
+.margin-no-bottom{margin-bottom: 0px!important;}
+.margin-no-left{margin-left: 0px!important;}
+.margin-no-right{margin-right: 0px!important;}
