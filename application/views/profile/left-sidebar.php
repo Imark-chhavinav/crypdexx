@@ -8,9 +8,9 @@
 			       <figure style="background-image: url(<?php echo $this->session->Profile_pic;  ?>)">				
 				     </figure>
 				        <div class="user_name">
-					       <h4><?php echo $this->session->full_Name;  ?>
+					       <h4><?php echo ( !empty( $this->session->business_name ) )? $this->session->business_name : $this->session->firstname ;  ?>
 					       <?php if( !empty( $this->session->business_name ) ):  ?>
-				     	      <small>Businessman</small>
+				     	      <!-- <small>Businessman</small> -->
 				     	  <?php endif; ?>
 					       </h4>
 				       </div>	

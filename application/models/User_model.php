@@ -70,6 +70,35 @@ class User_model extends CS_Model
         return $this->session->User_type;
     }
 
+    public function getUserDetails( $UserID )
+    {
+        $Data = $this->with_details()->as_array()->get($UserID);
+        $Final = array();
+        if(!empty($Data)):  
+            $ProfilePic = '';
+
+            if( !empty($Data['details']->Profile_pic) ):
+                $Image = json_decode($Data['details']->Profile_pic);
+                $PicPath = strstr($Image->full_path, 'uploads');
+                $ProfilePic = site_url().$PicPath;
+            endif;
+
+            $Final = array(
+                'firstname' => $Data['firstname'],
+                'surname' => $Data['surname'],
+                'email' => $Data['email'],
+                'phone_Number' => $Data['phone_Number'],
+                'user_role' => $Data['user_role'],
+                'business_name' => $Data['business_name'],
+                'city' => $Data['details']->city,
+                'country' => $Data['details']->country,
+                'photo_url' => $Data['details']->photo_url,
+                'about_me' => $Data['details']->about_me,
+                'profile_pic' => $ProfilePic
+            );
+        endif;
+       return $Final;
+    }
 
 	
 }

@@ -8,6 +8,7 @@ class Comment_model extends CS_Model
         $this->has_many['comment_meta'] = array('foreign_model'=>'Commentmeta_model','foreign_table'=>'cryp_comment_meta','foreign_key'=>'comment_id','local_key'=>'comment_id');        
         parent::__construct();
         $this->load->model('Commentmeta_model');
+        $this->load->model('User_model');
 	}    
 
     public function InsertPostComment( $Data )
@@ -46,14 +47,16 @@ class Comment_model extends CS_Model
                 $comment_reply = $this->getCommentsReply( $keys['comment_id']);
                 $LikeCount = $this->db->get_where('cryp_comment_meta', array( 'comment_id' => $keys['comment_id'] , 'meta_like' => 1 )); 
                 $IsUser_Like = $this->db->get_where('cryp_comment_meta', array( 'comment_id' => $keys['comment_id'] , 'meta_like' => 1 , 'user_id' => $this->session->User_ID )); 
+                $UserData = $this->user_model->getUserDetails($keys['comment_userId']);
                     $Comments[] = array(
                     'comment_id'        => (int)$keys['comment_id'],
                     'post_id'           => (int)$keys['post_id'],
                     'comment_userId'    => (int)$keys['comment_userId'],
+                    'comment_userData'  => (empty($UserData))?array():$UserData,
                     'comment_content'   => $keys['comment_content'],
                     'comment_createdOn' => $keys['comment_createdOn'],
                     'like_count'        => $LikeCount->num_rows(),
-                    'IsUser_Like'        => $IsUser_Like->num_rows(),
+                    'IsUser_Like'       => $IsUser_Like->num_rows(),
                     'comment_reply'     => $comment_reply
                     );                   
             endforeach;
@@ -69,11 +72,15 @@ class Comment_model extends CS_Model
             foreach( $Results as $keys ):
             $comment_reply = $this->getCommentsReply( $keys['comment_id']);
             $LikeCount = $this->db->get_where('cryp_comment_meta', array( 'comment_id' => $keys['comment_id'] , 'meta_like' => 1 ));
-            $IsUser_Like = $this->db->get_where('cryp_comment_meta', array( 'comment_id' => $keys['comment_id'] , 'meta_like' => 1 , 'user_id' => $this->session->User_ID ));             
+            $IsUser_Like = $this->db->get_where('cryp_comment_meta', array( 'comment_id' => $keys['comment_id'] , 'meta_like' => 1 , 'user_id' => $this->session->User_ID ));  
+
+             $UserData = $this->user_model->getUserDetails($keys['comment_userId']);
+
                  $Comments[] = array( 
                         'comment_id'         => (int)$keys['comment_id'],
                         'post_id'            => (int)$keys['post_id'],
                         'comment_userId'     => (int)$keys['comment_userId'],
+                        'comment_userData'   => (empty($UserData))?array():$UserData,
                         'comment_content'    => $keys['comment_content'],
                         'comment_createdOn'  => $keys['comment_createdOn'],
                         'like_count'         => $LikeCount->num_rows(),

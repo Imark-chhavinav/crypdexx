@@ -427,7 +427,7 @@ class Users extends CS_Controller {
 		if( !empty( $Data['details']->Profile_pic ) )
 
 		{
-
+			
 			$PicData = json_decode($Data['details']->Profile_pic);
 
 			$PicPath = strstr($PicData->full_path, 'uploads');
@@ -482,7 +482,8 @@ class Users extends CS_Controller {
 
 		        'User_ID'  		=> $Data['user_ID'],
 
-		        'full_Name'     => $Data['full_Name'],
+		        'firstname'     => $Data['firstname'],
+		        'surname'     	=> $Data['surname'],
 
 		        'email'     	=> $Data['email'],
 
@@ -708,5 +709,6 @@ class Users extends CS_Controller {
 			return true;
 		}
 	}
+	
 }
 

@@ -128,7 +128,7 @@ $(document).ready(function()
 	                        else
 		                        {
 		                        	toastr.success( 'Post Created Successfully', 'Success !');
-		                        	location.reload();	
+		                        	setTimeout(function(){ location.reload(); },3000) 	;
 		                        }
 							
 						}
@@ -245,7 +245,8 @@ $(document).ready(function()
 				  	var Obj = jQuery.parseJSON( res );
 					if( Obj.success == 1 )
 					{
-						toastr.success( Obj.result, 'Success');						
+						toastr.success( Obj.result, 'Success');
+						window.location = SiteUrl;						
 					}
 					else
 					{

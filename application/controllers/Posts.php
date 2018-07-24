@@ -111,8 +111,7 @@ class Posts extends CS_Controller {
 		
 		if ( ! $this->upload->do_upload( 'file' ))
             {
-            	$this->output->set_header("HTTP/1.0 400 Bad Request");
-  //echo "Error uploading file";
+            	$this->output->set_header("HTTP/1.0 400 Bad Request");  
             	$this->_resp( 0, "" , $this->upload->display_errors()); 
             }
             else
@@ -120,13 +119,26 @@ class Posts extends CS_Controller {
                     $data = $this->upload->data();                   
                     return $data;                    
             }
-	
 	}
 
 	public function getPosts( $PostID = NULL )
 	{
 		$total_posts = $this->post_model->count_rows();
 		$posts = $this->post_model->as_array()->paginate(2,$total_posts);
+		$Data = array();			
+		if(!empty($posts)):
+			foreach( $posts as $keys ):
+				$Data[] = $this->getPost( $keys['post_id'] );
+			endforeach;
+		endif;
+		//return $Data;
+		$this->_pre( $Data );
+	}
+
+	public function getUserPosts( $PostID = NULL )
+	{
+		$total_posts = $this->post_model->count_rows();
+		$posts = $this->post_model->where( 'user_id' , $this->session->User_ID )->order_by( 'is_created', 'DESC' )->as_array()->paginate(2,$total_posts);
 		$Data = array();			
 		if(!empty($posts)):
 			foreach( $posts as $keys ):
@@ -147,12 +159,15 @@ class Posts extends CS_Controller {
 			if( isset( $post['media'] ) && !empty( $post['media'] ) ):
 				$Media = $this->ArrangeMedia( $post['media'] );
 			endif;
+			 $UserData = $this->user_model->getUserDetails($post['user_id']);
+
 			$Data = array(
 				'post_ID' 			=> (int) $post['post_id'],
 				'post_content' 		=> $post['post_content'],
 				'post_type' 		=> $post['post_type'],
 				'created_on' 		=> $post['is_created'],
 				'user_id' 			=> (int) $post['user_id'],
+				'user_data' 		=> (empty($UserData))? array():$UserData,
 				'media' 			=> $Media,
 				'comments' 			=> $this->Comment_model->GetPostComments( $PostID )
 			);
