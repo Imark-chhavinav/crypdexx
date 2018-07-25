@@ -242,18 +242,18 @@ jQuery(document).ready(function(){
         //console.log( place );       
         $( place.address_components ).each(function( item , value )
           {            
-			console.log(value);
+			     console.log(value);
           /* City */
             if( value.types[0] == 'administrative_area_level_2' )
             {
               City = value.long_name;			  
               $('input[name="City"]').val( value.long_name );
             }
-			else if(value.types[0] == 'administrative_area_level_1')
-			{
-				City = value.long_name;			  
-				$('input[name="City"]').val( value.long_name );
-			}
+      			else if(value.types[0] == 'administrative_area_level_1')
+      			{
+      				City = value.long_name;			  
+      				$('input[name="City"]').val( value.long_name );
+      			}
 
           /* Country */
           if( value.types[0] == 'country' )
@@ -263,5 +263,20 @@ jQuery(document).ready(function(){
             }
          
           });
-        $( '#autocomplete' ).val( City + ' , ' +Country );
-      }
+          $( '#autocomplete' ).val( City + ' , ' +Country );
+    }
+
+    /* Show File selected Image */
+    function readURL(input) {
+      console.log(input);
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+          $('.read-it').css('background-image', 'url(' + e.target.result + ')');
+            //$('#blah').attr('src', e.target.result);
+        }
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}

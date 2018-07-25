@@ -487,6 +487,52 @@ $(document).ready(function()
 			}
 		});
 	}
+
+	/* Creating group */	
+	$( "#create-group" ).validate({
+	  rules: {
+	    group_name		: { required: true },
+	    group_desc		: { required: true },
+	    group_privacy	: { required: true },	    
+	    "group-pic": {
+			      required: true,
+			      accept: "image/jpg,image/jpeg,image/png,image/gif"
+			    }
+	  },
+	  submitHandler: function(form)
+		{
+			/* Get all Forms Data */
+			var fd = new FormData();
+			
+			$.each($("#create-group").serializeArray(), function(i, field) {
+			  fd.append(field.name, field.value);
+			});
+
+			fd.append('group_pic', $('#my-file')[0].files[0]);		
+			
+			console.log( fd );		
+			/*$.ajax({
+				  type: "POST",
+				  url: UserUrl+'UpdateUser',
+				  data: fd,
+				  processData: false,
+				  contentType: false,
+				  success: function(res) 
+				  {	
+				  	var Obj = jQuery.parseJSON( res );
+					if( Obj.success == 1 )
+					{
+						toastr.success( Obj.result, 'Success');
+						window.location = SiteUrl;						
+					}
+					else
+					{
+						toastr.error( Obj.error, 'Error !');						
+					}
+				  }
+				});*/
+		}
+	});
 });
 
 
