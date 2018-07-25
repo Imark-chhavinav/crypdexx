@@ -268,15 +268,19 @@ jQuery(document).ready(function(){
 
     /* Show File selected Image */
     function readURL(input) {
-      console.log(input);
+
     if (input.files && input.files[0]) {
         var reader = new FileReader();
-
+         console.log(reader);
         reader.onload = function (e) {
           $('.read-it').css('background-image', 'url(' + e.target.result + ')');
             //$('#blah').attr('src', e.target.result);
         }
 
         reader.readAsDataURL(input.files[0]);
+    }
+    else
+    {
+      $('.read-it').css('background-image', 'url('+ SiteUrl +'assests/images/group.jpg)');
     }
 }

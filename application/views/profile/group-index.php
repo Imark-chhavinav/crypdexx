@@ -35,12 +35,12 @@
 									<label class="border-bottom">Would you like to add anothe admin to your group?</label>
 									   <div class="create_channel_inner padding-no-bottom padding-no-top">
 										 <div class="redio_btn">
-												 <input type="radio" id="test1" name="radio-group" checked="">
+												 <input type="radio" id="test1" name="radio-group" >
 												 <label for="test1">Yes</label>
-												 <input type="radio" id="test2" name="radio-group">
+												 <input type="radio" id="test2" name="radio-group" checked="">
 												 <label for="test2">No</label>
 										  </div>	
-						<div class="form-group double_button">
+						<div style="display:none" class="form-group double_button">
 									<div class="row">
 									 <div class="col-md-4">	
 										<label>Admin 1</label>
@@ -62,7 +62,7 @@
 								  </div>	
 								</div>
 						</div>
-						<div class="form-group justify-content-end add_more">
+						<div style="display:none" class="form-group justify-content-end add_more">
 						   <button class="add_more_option"><i class="fa fa-plus" aria-hidden="true"></i> Add More</button>
 						</div>						
 					</div>

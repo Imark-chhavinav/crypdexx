@@ -76,15 +76,16 @@ class Group extends CS_Controller {
 	public function InsertGroup()
 	{
 		$Data = $this->input->post();
+		$Data['group_pic'] = $this->UploadImg();
+
 		/* Validate Data */
-		$this->ValidInsertPost($Data);
+		$this->ValidInsertGroup($Data);
 
 		if( !empty( $Data ) )
 		{
-			$Data['user_id'] = $this->user_model->get_userId();
-
+			$Data['group_pic'] = $this->UploadImg();
 			/* Insert Post */
-			$InsertID = $this->post_model->InsertPostUser( $Data );
+			$InsertID = $this->Group_model->GroupInsert( $Data );
 			$ReturnId = $this->encryption->encrypt( $InsertID );
 			$this->_resp( 1 , $ReturnId );
 		}
@@ -98,7 +99,8 @@ class Group extends CS_Controller {
 			'group_name'   	 	=> 'required',			
 			'group_desc'    	=> 'required',			
 			'group_privacy' 	=> 'required',			
-			'group_banner'  	=> 'required'
+			'group_pic' 		=> 'required'			
+			//'group_banner'  	=> 'required'
 		);
 
 		$this->validator->validation_rules( $ArrayRules );	//	Validating
@@ -129,7 +131,7 @@ class Group extends CS_Controller {
             else
             {
                     $data = $this->upload->data();                   
-                    return $data;                    
+                    return json_encode($data);                    
             }
 	}
 

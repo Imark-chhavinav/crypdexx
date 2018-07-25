@@ -490,15 +490,38 @@ $(document).ready(function()
 
 	/* Creating group */	
 	$( "#create-group" ).validate({
-	  rules: {
-	    group_name		: { required: true },
-	    group_desc		: { required: true },
-	    group_privacy	: { required: true },	    
-	    "group-pic": {
+	ignore: [],
+	errorPlacement: function(error, element) 
+		{           
+            if (element.attr("name") == "group-pic" ) 
+            {
+                $(".file-return").after( error.append());
+            }            
+            else 
+            {
+            	$(element).after( error.append());                
+            }
+        },               
+	rules: 
+	  	{
+		    group_name		: { required: true },
+		    group_desc		: { required: true },
+		    group_privacy	: { required: true },	    
+		    "group-pic": {	
 			      required: true,
 			      accept: "image/jpg,image/jpeg,image/png,image/gif"
-			    }
+				}
 	  },
+	  invalidHandler: function(form, validator) {
+
+        if (!validator.numberOfInvalids())
+            return;
+
+        $('html, body').animate({
+            scrollTop: $(validator.errorList[0].element).offset().top - 100
+        }, 2000);
+
+    },   	
 	  submitHandler: function(form)
 		{
 			/* Get all Forms Data */
@@ -508,12 +531,12 @@ $(document).ready(function()
 			  fd.append(field.name, field.value);
 			});
 
-			fd.append('group_pic', $('#my-file')[0].files[0]);		
+			fd.append('file', $('#my-file')[0].files[0]);		
 			
 			console.log( fd );		
-			/*$.ajax({
+			$.ajax({
 				  type: "POST",
-				  url: UserUrl+'UpdateUser',
+				  url: SiteUrl+'Group/InsertGroup',
 				  data: fd,
 				  processData: false,
 				  contentType: false,
@@ -530,7 +553,7 @@ $(document).ready(function()
 						toastr.error( Obj.error, 'Error !');						
 					}
 				  }
-				});*/
+				});
 		}
 	});
 });
