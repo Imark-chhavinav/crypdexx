@@ -42,7 +42,7 @@
 					 <input type="text" name="business_name" placeholder="Business Name">
 				   </div>
 					<div id="phone-hide" class="form-group">		
-						<label>Phone Number</label>
+						<label>Mobile Number</label>
 					 <input name="phone_number" type="text">
 				   </div>
 				   <div style="display:none" class="form-group">		
