@@ -135,6 +135,13 @@ class Group extends CS_Controller {
             }
 	}
 
+
+	public function GroupAvailability()
+	{
+		$GroupName = $this->input->post( 'group_name' );
+		$Result = $this->where( '' , $GroupName)->get();
+	}
+
 	public function getPosts( $PostID = NULL )
 	{
 		$total_posts = $this->post_model->count_rows();
