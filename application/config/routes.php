@@ -55,7 +55,6 @@ $route['translate_uri_dashes'] = TRUE;
 $route['group'] = 'home/group';
 $route['(:any)'] = 'home/$1';
 $route['market/(:num)'] = 'home/market/$1';
-$route['portal'] = 'admin';
 //$route['market/(:any)'] = 'market/index/';
 //$route['market/index/(:num)'] = 'market/index/$1';
 //market/index/2categories/(:num)

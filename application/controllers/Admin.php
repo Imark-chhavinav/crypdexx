@@ -1,178 +1,52 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Admin extends CS_Controller {
-
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see https://codeigniter.com/user_guide/general/urls.html
-	 */
-
-	private $FolderPath = '';
+class Admin extends CS_Controller 
+{
 
 	public function __construct()
 	{		 
-		parent::__construct();		
+		parent::__construct();
+
+		/* Load Modals */
+		$this->load->model('Admin_model');		
 	}
 
 	public function index()
 	{
+		echo "Chhavi";
+	}
+
+	private function is_login()
+	{
+		return $this->session->is_admin;
+	}
+
+	public function login()
+	{
+		//$Data = $this->input->post();
+	 	$this->form_validation->set_rules('passconf', 'Password Confirmation', 'required');
+        $this->form_validation->set_rules('email', 'Email', 'required');
+        if ($this->form_validation->run() == FALSE)
+        {
+                $this->load->view('myform');
+        }
+        else
+        {
+                $this->Admin_model->login($Data);
+        }		
 		
-		echo "Chhavi";	
-		/*
-			group_name
-			group_desc
-			group_privacy
-			group_pic
-			group_banner
-			group_createdBy
-		*/	
 	}
 
-	public function new_group()
+	private function generateSession( $Data )
 	{
-		$this->load->view('profile/profile-header');
-		$this->load->view('profile/left-sidebar');
-		$this->load->view('profile/group-index');
-		$this->load->view('profile/profile-footer');
-	}
-
-	public function InsertGroup()
-	{
-		$Data = $this->input->post();
-		$Data['group_pic'] = $this->UploadImg();
-
-		/* Validate Data */
-		$this->ValidInsertGroup($Data);
-
-		if( !empty( $Data ) )
-		{
-			$Data['group_pic'] = $this->UploadImg();
-			/* Insert Post */
-			$InsertID = $this->Group_model->GroupInsert( $Data );
-			$ReturnId = $this->encryption->encrypt( $InsertID );
-			$this->_resp( 1 , $ReturnId );
-		}
-	}
-
-	private function ValidInsertGroup( $Data )
-	{
-		$ArrayRules = array();	
-
-		$ArrayRules = array(			
-			'group_name'   	 	=> 'required',			
-			'group_desc'    	=> 'required',			
-			'group_privacy' 	=> 'required',			
-			'group_pic' 		=> 'required'			
-			//'group_banner'  	=> 'required'
+		$SessionSetup =  array(
+			'user_id'	=> $Data['user_ID'],
+			'firstname'	=> $Data['firstname'],
+			'email'		=> $Data['email'],
+			'is_admin' 	=> true
 		);
 
-		$this->validator->validation_rules( $ArrayRules );	//	Validating
-
-		$validated_data = $this->validator->run($Data);
-
-		if($validated_data === false) 
-		{			
-			$Error = $this->validator->get_errors_array();				
-			$this->_resp( 0, "" , reset($Error));
-		} 
-		else 
-		{
-			return true;
-		}
+		$this->session->set_userdata($SessionSetup);
 	}
-
-	
-
-	protected function UploadImg()
-	{
-		
-		if ( ! $this->upload->do_upload( 'file' ))
-            {
-            	$this->output->set_header("HTTP/1.0 400 Bad Request");  
-            	$this->_resp( 0, "" , $this->upload->display_errors()); 
-            }
-            else
-            {
-                    $data = $this->upload->data();                   
-                    return json_encode($data);                    
-            }
-	}
-
-
-	public function GroupAvailability()
-	{
-		$GroupName = $this->input->post( 'group_name' );
-		$Result = $this->where( '' , $GroupName)->get();
-	}
-
-	public function getPosts( $PostID = NULL )
-	{
-		$total_posts = $this->post_model->count_rows();
-		$posts = $this->post_model->as_array()->paginate(2,$total_posts);
-		$Data = array();			
-		if(!empty($posts)):
-			foreach( $posts as $keys ):
-				$Data[] = $this->getPost( $keys['post_id'] );
-			endforeach;
-		endif;
-		//return $Data;
-		$this->_pre( $Data );
-	}
-
-	public function getUserPosts( $PostID = NULL )
-	{
-		$total_posts = $this->post_model->count_rows();
-		$posts = $this->post_model->where( 'user_id' , $this->session->User_ID )->order_by( 'is_created', 'DESC' )->as_array()->paginate(2,$total_posts);
-		$Data = array();			
-		if(!empty($posts)):
-			foreach( $posts as $keys ):
-				$Data[] = $this->getPost( $keys['post_id'] );
-			endforeach;
-		endif;
-		//return $Data;
-		$this->_pre( $Data );
-	}
-
-	public function getPost( $PostID = NULL )
-	{
-		$post = $this->post_model->with_media()->as_array()->get($PostID);		
-		if( !empty( $post ) )
-		{	
-			//$this->_pre( $post );			
-			$Media = array();		
-			if( isset( $post['media'] ) && !empty( $post['media'] ) ):
-				$Media = $this->ArrangeMedia( $post['media'] );
-			endif;
-			 $UserData = $this->user_model->getUserDetails($post['user_id']);
-
-			$Data = array(
-				'post_ID' 			=> (int) $post['post_id'],
-				'post_content' 		=> $post['post_content'],
-				'post_type' 		=> $post['post_type'],
-				'created_on' 		=> $post['is_created'],
-				'user_id' 			=> (int) $post['user_id'],
-				'user_data' 		=> (empty($UserData))? array():$UserData,
-				'media' 			=> $Media,
-				'comments' 			=> $this->Comment_model->GetPostComments( $PostID )
-			);
-			
-			return $Data;
-		}
-	
-	}
-
-	
-	
 }
